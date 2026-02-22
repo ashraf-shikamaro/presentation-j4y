@@ -1,0 +1,984 @@
+<!doctype html>
+<html lang="fr" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Just4Youth - Présentation</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --forest: #1B4332;
+      --emerald: #276D2A;
+      --white: #FFFFFF;
+      --light-green: #D8F3DC;
+    }
+    
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .font-playfair { font-family: 'Playfair Display', serif; }
+    .font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
+    
+    .bg-forest { background-color: var(--forest); }
+    .bg-emerald { background-color: var(--emerald); }
+    .text-forest { color: var(--forest); }
+    .text-emerald { color: var(--emerald); }
+    
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.3;
+      animation: blobFloat 8s ease-in-out infinite;
+    }
+    
+    .blob-1 {
+      width: 300px;
+      height: 300px;
+      background: var(--emerald);
+      top: -50px;
+      right: -50px;
+      animation-delay: 0s;
+    }
+    
+    .blob-2 {
+      width: 250px;
+      height: 250px;
+      background: var(--forest);
+      bottom: -30px;
+      left: -30px;
+      animation-delay: 2s;
+    }
+    
+    .blob-3 {
+      width: 200px;
+      height: 200px;
+      background: var(--emerald);
+      top: 50%;
+      left: 50%;
+      animation-delay: 4s;
+    }
+    
+    @keyframes blobFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -30px) scale(1.1); }
+      66% { transform: translate(-20px, 20px) scale(0.9); }
+    }
+    
+    .slide {
+      min-height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .code-block {
+      background: #0d1117;
+      border-radius: 12px;
+      font-family: 'Fira Code', 'Monaco', monospace;
+      font-size: 11px;
+      line-height: 1.5;
+      overflow: hidden;
+    }
+    
+    .code-header {
+      background: #161b22;
+      padding: 8px 12px;
+      display: flex;
+      gap: 6px;
+    }
+    
+    .code-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    
+    .mockup-screen {
+      background: linear-gradient(145deg, #1B4332, #276D2A);
+      border-radius: 12px;
+      padding: 8px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+    }
+    
+    .mockup-content {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .stat-counter {
+      font-size: 3rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--forest), var(--emerald));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .feature-card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 10px 40px rgba(27, 67, 50, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 60px rgba(27, 67, 50, 0.15);
+    }
+    
+    .nav-dots {
+      position: fixed;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .nav-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      border: 2px solid var(--forest);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-dot.active {
+      background: var(--emerald);
+      transform: scale(1.2);
+    }
+    
+    .nav-dot:hover {
+      background: var(--forest);
+    }
+    
+    .icon-circle {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--forest), var(--emerald));
+      color: white;
+      margin-bottom: 16px;
+    }
+    
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+    
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, var(--forest), var(--emerald));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .pulse-ring {
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(39, 109, 42, 0.4); }
+      70% { box-shadow: 0 0 0 20px rgba(39, 109, 42, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(39, 109, 42, 0); }
+    }
+    
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    
+    .tech-item {
+      background: rgba(27, 67, 50, 0.1);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      text-align: center;
+      font-weight: 500;
+    }
+    
+    @media (max-width: 768px) {
+      .nav-dots { display: none; }
+      .tech-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="font-jakarta h-full overflow-x-hidden" style="background-color: var(--light-green);">
+  <div id="app" class="h-full overflow-auto">
+   <!-- Navigation Dots -->
+   <div class="nav-dots">
+    <div class="nav-dot active" data-slide="0"></div>
+    <div class="nav-dot" data-slide="1"></div>
+    <div class="nav-dot" data-slide="2"></div>
+    <div class="nav-dot" data-slide="3"></div>
+    <div class="nav-dot" data-slide="4"></div>
+    <div class="nav-dot" data-slide="5"></div>
+    <div class="nav-dot" data-slide="6"></div>
+    <div class="nav-dot" data-slide="7"></div>
+   </div><!-- Slide 1: Titre -->
+   <section class="slide bg-forest flex items-center justify-center p-8" data-index="0">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="text-center relative z-10 max-w-4xl">
+     <div class="mb-8 reveal">
+      <svg class="w-24 h-24 mx-auto mb-6" viewbox="0 0 100 100">
+       <circle cx="50" cy="50" r="45" fill="none" stroke="#276D2A" stroke-width="3" /> <path d="M30 50 Q50 25 70 50 Q50 75 30 50" fill="#276D2A" opacity="0.8" /> <circle cx="50" cy="50" r="15" fill="#D8F3DC" /> <text x="50" y="55" text-anchor="middle" fill="#1B4332" font-size="12" font-weight="bold">
+        J4Y
+       </text>
+      </svg>
+     </div>
+     <h1 id="main-title" class="font-playfair text-5xl md:text-7xl font-bold text-white mb-6 reveal" style="animation-delay: 0.2s;">Just4Youth</h1>
+     <p id="subtitle" class="text-xl md:text-2xl text-green-200 mb-8 reveal" style="animation-delay: 0.4s;">Plateforme Digitale pour l'Engagement de la Jeunesse</p>
+     <div class="flex justify-center gap-4 reveal" style="animation-delay: 0.6s;">
+      <span class="px-4 py-2 bg-emerald/30 text-white rounded-full text-sm">HTML5</span> <span class="px-4 py-2 bg-emerald/30 text-white rounded-full text-sm">CSS3</span> <span class="px-4 py-2 bg-emerald/30 text-white rounded-full text-sm">JavaScript</span> <span class="px-4 py-2 bg-emerald/30 text-white rounded-full text-sm">Bootstrap 5</span>
+     </div>
+     <div class="mt-12 reveal" style="animation-delay: 0.8s;">
+      <svg class="w-8 h-8 mx-auto text-white animate-bounce" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+     </div>
+    </div>
+   </section><!-- Slide 2: Mission -->
+   <section class="slide bg-white flex items-center p-8" data-index="1">
+    <div class="max-w-6xl mx-auto w-full">
+     <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="reveal">
+       <span class="text-emerald font-semibold text-sm uppercase tracking-wider">Notre Raison d'Être</span>
+       <h2 class="font-playfair text-4xl md:text-5xl font-bold text-forest mt-2 mb-6">Mission</h2>
+       <p class="text-lg text-gray-700 leading-relaxed mb-6">Accompagner l'<strong class="text-emerald">épanouissement identitaire</strong> (arabo-musulman) et citoyen à travers l'<strong class="text-emerald">innovation</strong> et la <strong class="text-emerald">bienveillance</strong>.</p>
+       <div class="space-y-4">
+        <div class="flex items-start gap-4">
+         <div class="w-10 h-10 bg-emerald/10 rounded-full flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5 text-emerald" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+         </div>
+         <p class="text-gray-600">Créer un espace numérique inclusif et bienveillant</p>
+        </div>
+        <div class="flex items-start gap-4">
+         <div class="w-10 h-10 bg-emerald/10 rounded-full flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5 text-emerald" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+         </div>
+         <p class="text-gray-600">Favoriser l'engagement citoyen des jeunes</p>
+        </div>
+        <div class="flex items-start gap-4">
+         <div class="w-10 h-10 bg-emerald/10 rounded-full flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5 text-emerald" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+         </div>
+         <p class="text-gray-600">Valoriser l'identité et la diversité culturelle</p>
+        </div>
+       </div>
+      </div>
+      <div class="reveal" style="animation-delay: 0.3s;">
+       <div class="relative">
+        <div class="absolute -top-4 -left-4 w-full h-full bg-emerald/20 rounded-3xl"></div>
+        <div class="relative bg-gradient-to-br from-forest to-emerald rounded-3xl p-8 text-white">
+         <div class="grid grid-cols-2 gap-6">
+          <div class="text-center">
+           <div class="text-4xl font-bold">
+            🌍
+           </div>
+           <p class="mt-2 text-sm opacity-90">Communauté</p>
+          </div>
+          <div class="text-center">
+           <div class="text-4xl font-bold">
+            💡
+           </div>
+           <p class="mt-2 text-sm opacity-90">Innovation</p>
+          </div>
+          <div class="text-center">
+           <div class="text-4xl font-bold">
+            🤝
+           </div>
+           <p class="mt-2 text-sm opacity-90">Solidarité</p>
+          </div>
+          <div class="text-center">
+           <div class="text-4xl font-bold">
+            🎯
+           </div>
+           <p class="mt-2 text-sm opacity-90">Impact</p>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Slide 3: Charte Graphique -->
+   <section class="slide flex items-center p-8" style="background: linear-gradient(135deg, #D8F3DC 0%, #fff 100%);" data-index="2">
+    <div class="max-w-6xl mx-auto w-full">
+     <div class="text-center mb-12 reveal">
+      <span class="text-emerald font-semibold text-sm uppercase tracking-wider">Identité Visuelle</span>
+      <h2 class="font-playfair text-4xl md:text-5xl font-bold text-forest mt-2">Charte Graphique</h2>
+      <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Design élégant avec typographies contrastées et formes organiques animées pour un aspect humain</p>
+     </div>
+     <div class="grid md:grid-cols-3 gap-6">
+      <!-- Couleurs -->
+      <div class="feature-card reveal">
+       <h3 class="font-playfair text-xl font-bold text-forest mb-4">Palette de Couleurs</h3>
+       <div class="space-y-3">
+        <div class="flex items-center gap-3">
+         <div class="w-12 h-12 rounded-xl bg-forest shadow-lg"></div>
+         <div>
+          <p class="font-semibold text-forest">Vert Forêt</p>
+          <p class="text-sm text-gray-500">#1B4332</p>
+         </div>
+        </div>
+        <div class="flex items-center gap-3">
+         <div class="w-12 h-12 rounded-xl bg-emerald shadow-lg"></div>
+         <div>
+          <p class="font-semibold text-forest">Vert Émeraude</p>
+          <p class="text-sm text-gray-500">#276D2A</p>
+         </div>
+        </div>
+        <div class="flex items-center gap-3">
+         <div class="w-12 h-12 rounded-xl bg-white border-2 border-gray-200 shadow-lg"></div>
+         <div>
+          <p class="font-semibold text-forest">Blanc Pur</p>
+          <p class="text-sm text-gray-500">#FFFFFF</p>
+         </div>
+        </div>
+       </div>
+      </div><!-- Typographies -->
+      <div class="feature-card reveal" style="animation-delay: 0.2s;">
+       <h3 class="font-playfair text-xl font-bold text-forest mb-4">Typographies</h3>
+       <div class="space-y-4">
+        <div class="p-4 bg-forest/5 rounded-xl">
+         <p class="font-playfair text-2xl text-forest">Playfair Display</p>
+         <p class="text-sm text-gray-500 mt-1">Titres &amp; En-têtes</p>
+        </div>
+        <div class="p-4 bg-forest/5 rounded-xl">
+         <p class="font-jakarta text-xl text-forest">Plus Jakarta Sans</p>
+         <p class="text-sm text-gray-500 mt-1">Corps de texte</p>
+        </div>
+       </div>
+      </div><!-- Blobs -->
+      <div class="feature-card reveal" style="animation-delay: 0.4s;">
+       <h3 class="font-playfair text-xl font-bold text-forest mb-4">Formes Organiques</h3>
+       <div class="relative h-40 bg-forest/5 rounded-xl overflow-hidden">
+        <div class="absolute w-20 h-20 bg-emerald/40 rounded-full top-2 left-4 animate-pulse"></div>
+        <div class="absolute w-16 h-16 bg-forest/30 rounded-full bottom-4 right-8" style="animation: blobFloat 4s ease-in-out infinite;"></div>
+        <div class="absolute w-12 h-12 bg-emerald/50 rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" style="animation: blobFloat 6s ease-in-out infinite reverse;"></div>
+       </div>
+       <p class="text-sm text-gray-500 mt-3 text-center">Blobs animés CSS</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Slide 4: UX -->
+   <section class="slide bg-forest flex items-center p-8" data-index="3">
+    <div class="blob blob-1" style="opacity: 0.15;"></div>
+    <div class="blob blob-2" style="opacity: 0.15;"></div>
+    <div class="max-w-6xl mx-auto w-full relative z-10">
+     <div class="text-center mb-12 reveal">
+      <span class="text-green-300 font-semibold text-sm uppercase tracking-wider">Navigation Intuitive</span>
+      <h2 class="font-playfair text-4xl md:text-5xl font-bold text-white mt-2">Expérience Utilisateur</h2>
+     </div>
+     <div class="grid md:grid-cols-2 gap-8 items-center">
+      <div class="reveal">
+       <div class="mockup-screen">
+        <div class="mockup-content">
+         <!-- Navbar Glassmorphism Mockup -->
+         <div class="glass-nav p-3 flex items-center justify-between" style="background: rgba(27, 67, 50, 0.8);">
+          <div class="flex items-center gap-2">
+           <div class="w-8 h-8 bg-emerald rounded-full flex items-center justify-center">
+            <span class="text-white text-xs font-bold">J4Y</span>
+           </div><span class="text-white text-sm font-semibold">Just4Youth</span>
+          </div>
+          <div class="flex gap-4 text-white/80 text-xs">
+           <span>Accueil</span> <span>Activités</span> <span>À propos</span> <span>Contact</span>
+          </div>
+         </div><!-- Page Content Mockup -->
+         <div class="p-4 bg-gray-50">
+          <div class="h-24 bg-gradient-to-r from-forest to-emerald rounded-lg mb-4 flex items-center justify-center">
+           <span class="text-white font-playfair text-lg">Hero Section</span>
+          </div>
+          <div class="grid grid-cols-3 gap-2">
+           <div class="h-16 bg-white rounded shadow-sm flex items-center justify-center text-xs text-gray-400">
+            Section 1
+           </div>
+           <div class="h-16 bg-white rounded shadow-sm flex items-center justify-center text-xs text-gray-400">
+            Section 2
+           </div>
+           <div class="h-16 bg-white rounded shadow-sm flex items-center justify-center text-xs text-gray-400">
+            Section 3
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="space-y-6 reveal" style="animation-delay: 0.3s;">
+       <div class="bg-white/10 backdrop-blur rounded-2xl p-6">
+        <div class="flex items-center gap-4 mb-3">
+         <div class="w-12 h-12 bg-emerald rounded-xl flex items-center justify-center">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+         </div>
+         <h3 class="text-white font-semibold text-lg">Navbar Glassmorphism</h3>
+        </div>
+        <p class="text-green-200 text-sm">Effet de verre dépoli avec backdrop-filter pour une navigation élégante et moderne</p>
+       </div>
+       <div class="bg-white/10 backdrop-blur rounded-2xl p-6">
+        <div class="flex items-center gap-4 mb-3">
+         <div class="w-12 h-12 bg-emerald rounded-xl flex items-center justify-center">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+          </svg>
+         </div>
+         <h3 class="text-white font-semibold text-lg">Structure Segmentée</h3>
+        </div>
+        <p class="text-green-200 text-sm">Organisation claire du contenu en sections distinctes pour une lecture fluide</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Slide 5: Innovation Technique -->
+   <section class="slide bg-white flex items-center p-8" data-index="4">
+    <div class="max-w-6xl mx-auto w-full">
+     <div class="text-center mb-12 reveal">
+      <span class="text-emerald font-semibold text-sm uppercase tracking-wider">Fonctionnalités Avancées</span>
+      <h2 class="font-playfair text-4xl md:text-5xl font-bold text-forest mt-2">Innovation Technique</h2>
+      <p class="text-gray-600 mt-4">Menu interactif avec changement de contenu dynamique au survol</p>
+     </div>
+     <div class="grid md:grid-cols-2 gap-8 items-center">
+      <div class="reveal">
+       <div class="code-block">
+        <div class="code-header">
+         <div class="code-dot" style="background: #ff5f56;"></div>
+         <div class="code-dot" style="background: #ffbd2e;"></div>
+         <div class="code-dot" style="background: #27ca40;"></div><span class="text-gray-400 text-xs ml-2">activities.js</span>
+        </div>
+        <pre class="p-4 text-green-400 overflow-x-auto"><code><span class="text-purple-400">const</span> activities = [
+  { <span class="text-yellow-300">id</span>: <span class="text-orange-300">'sport'</span>, <span class="text-yellow-300">title</span>: <span class="text-orange-300">'Activités Sportives'</span> },
+  { <span class="text-yellow-300">id</span>: <span class="text-orange-300">'culture'</span>, <span class="text-yellow-300">title</span>: <span class="text-orange-300">'Culture &amp; Patrimoine'</span> },
+  { <span class="text-yellow-300">id</span>: <span class="text-orange-300">'education'</span>, <span class="text-yellow-300">title</span>: <span class="text-orange-300">'Soutien Scolaire'</span> }
+];
+
+menuItems.<span class="text-blue-300">forEach</span>(item =&gt; {
+  item.<span class="text-blue-300">addEventListener</span>(<span class="text-orange-300">'mouseenter'</span>, () =&gt; {
+    <span class="text-purple-400">const</span> content = <span class="text-blue-300">getContentById</span>(item.dataset.id);
+    contentArea.<span class="text-yellow-300">innerHTML</span> = content;
+    contentArea.classList.<span class="text-blue-300">add</span>(<span class="text-orange-300">'fade-in'</span>);
+  });
+});</code></pre>
+       </div>
+      </div>
+      <div class="reveal" style="animation-delay: 0.3s;">
+       <div class="bg-gradient-to-br from-forest/5 to-emerald/5 rounded-2xl p-6">
+        <h3 class="font-playfair text-xl font-bold text-forest mb-4">Menu Interactif - Démo</h3>
+        <div class="flex gap-2 mb-4">
+         <button class="menu-demo-btn px-4 py-2 bg-forest text-white rounded-lg text-sm transition-all hover:bg-emerald" data-content="sport">🏃 Sport</button> <button class="menu-demo-btn px-4 py-2 bg-forest/20 text-forest rounded-lg text-sm transition-all hover:bg-forest hover:text-white" data-content="culture">📚 Culture</button> <button class="menu-demo-btn px-4 py-2 bg-forest/20 text-forest rounded-lg text-sm transition-all hover:bg-forest hover:text-white" data-content="education">🎓 Éducation</button>
+        </div>
+        <div id="demo-content" class="bg-white rounded-xl p-4 min-h-[120px] transition-all duration-300">
+         <div class="flex items-center gap-3">
+          <span class="text-3xl">🏃</span>
+          <div>
+           <h4 class="font-semibold text-forest">Activités Sportives</h4>
+           <p class="text-sm text-gray-600">Football, Basketball, Arts martiaux et plus encore pour tous les niveaux.</p>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Slide 6: Dynamisme & JS -->
+   <section class="slide flex items-center p-8" style="background: linear-gradient(180deg, #1B4332 0%, #276D2A 100%);" data-index="5">
+    <div class="max-w-6xl mx-auto w-full">
+     <div class="text-center mb-12 reveal">
+      <span class="text-green-300 font-semibold text-sm uppercase tracking-wider">Animations Performantes</span>
+      <h2 class="font-playfair text-4xl md:text-5xl font-bold text-white mt-2">Dynamisme &amp; JavaScript</h2>
+     </div>
+     <div class="grid md:grid-cols-2 gap-8">
+      <div class="reveal">
+       <div class="bg-white/10 backdrop-blur rounded-2xl p-6">
+        <h3 class="text-white font-semibold text-lg mb-4">🔍 Intersection Observer API</h3>
+        <div class="code-block">
+         <div class="code-header">
+          <div class="code-dot" style="background: #ff5f56;"></div>
+          <div class="code-dot" style="background: #ffbd2e;"></div>
+          <div class="code-dot" style="background: #27ca40;"></div>
+         </div>
+         <pre class="p-3 text-green-400 text-xs"><code><span class="text-purple-400">const</span> observer = <span class="text-purple-400">new</span> <span class="text-blue-300">IntersectionObserver</span>(
+  (entries) =&gt; {
+    entries.<span class="text-blue-300">forEach</span>(entry =&gt; {
+      <span class="text-purple-400">if</span> (entry.isIntersecting) {
+        entry.target.classList.<span class="text-blue-300">add</span>(<span class="text-orange-300">'reveal'</span>);
+      }
+    });
+  },
+  { <span class="text-yellow-300">threshold</span>: 0.1 }
+);</code></pre>
+        </div>
+       </div>
+      </div>
+      <div class="reveal" style="animation-delay: 0.2s;">
+       <div class="bg-white/10 backdrop-blur rounded-2xl p-6">
+        <h3 class="text-white font-semibold text-lg mb-4">📊 Compteurs Animés</h3>
+        <div class="grid grid-cols-3 gap-4 mt-6">
+         <div class="text-center">
+          <div class="stat-counter text-white" data-target="500">
+           0
+          </div>
+          <p class="text-green-200 text-sm">Jeunes actifs</p>
+         </div>
+         <div class="text-center">
+          <div class="stat-counter text-white" data-target="25">
+           0
+          </div>
+          <p class="text-green-200 text-sm">Activités</p>
+         </div>
+         <div class="text-center">
+          <div class="stat-counter text-white" data-target="12">
+           0
+          </div>
+          <p class="text-green-200 text-sm">Partenaires</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="mt-8 reveal" style="animation-delay: 0.4s;">
+      <div class="bg-white/10 backdrop-blur rounded-2xl p-6">
+       <h3 class="text-white font-semibold text-lg mb-4">✨ Effet Reveal - Démonstration</h3>
+       <div class="grid grid-cols-4 gap-4">
+        <div class="bg-white/20 rounded-xl p-4 text-center text-white opacity-0 animate-reveal-demo" style="animation-delay: 0.1s;">
+         Box 1
+        </div>
+        <div class="bg-white/20 rounded-xl p-4 text-center text-white opacity-0 animate-reveal-demo" style="animation-delay: 0.2s;">
+         Box 2
+        </div>
+        <div class="bg-white/20 rounded-xl p-4 text-center text-white opacity-0 animate-reveal-demo" style="animation-delay: 0.3s;">
+         Box 3
+        </div>
+        <div class="bg-white/20 rounded-xl p-4 text-center text-white opacity-0 animate-reveal-demo" style="animation-delay: 0.4s;">
+         Box 4
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <style>
+      @keyframes revealDemo {
+        0% { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0); }
+      }
+      .animate-reveal-demo {
+        animation: revealDemo 0.6s ease forwards;
+      }
+    </style><!-- Slide 7: Responsive Design -->
+   <section class="slide bg-white flex items-center p-8" data-index="6">
+    <div class="max-w-6xl mx-auto w-full">
+     <div class="text-center mb-12 reveal">
+      <span class="text-emerald font-semibold text-sm uppercase tracking-wider">Adaptabilité Totale</span>
+      <h2 class="font-playfair text-4xl md:text-5xl font-bold text-forest mt-2">Responsive Design</h2>
+      <p class="text-gray-600 mt-4">Site 100% adaptable grâce à Bootstrap 5 et Media Queries personnalisées</p>
+     </div>
+     <div class="flex flex-wrap justify-center gap-6 items-end reveal">
+      <!-- Mobile -->
+      <div class="mockup-screen" style="width: 100px;">
+       <div class="mockup-content" style="height: 180px;">
+        <div class="bg-forest p-1">
+         <div class="flex justify-between items-center">
+          <div class="w-4 h-4 bg-emerald rounded-full"></div>
+          <div class="flex gap-0.5">
+           <div class="w-1 h-3 bg-white/60"></div>
+           <div class="w-1 h-3 bg-white/60"></div>
+           <div class="w-1 h-3 bg-white/60"></div>
+          </div>
+         </div>
+        </div>
+        <div class="p-2 bg-gray-50 h-full">
+         <div class="h-8 bg-gradient-to-r from-forest to-emerald rounded mb-1"></div>
+         <div class="space-y-1">
+          <div class="h-3 bg-gray-200 rounded"></div>
+          <div class="h-3 bg-gray-200 rounded w-3/4"></div>
+         </div>
+        </div>
+       </div>
+       <p class="text-center text-xs text-gray-500 mt-2">📱 Mobile</p>
+      </div><!-- Tablet -->
+      <div class="mockup-screen" style="width: 160px;">
+       <div class="mockup-content" style="height: 200px;">
+        <div class="bg-forest p-2">
+         <div class="flex justify-between items-center">
+          <div class="flex items-center gap-1">
+           <div class="w-5 h-5 bg-emerald rounded-full"></div><span class="text-white text-xs">J4Y</span>
+          </div>
+          <div class="flex gap-2 text-white/60 text-xs">
+           <span>•</span><span>•</span><span>•</span>
+          </div>
+         </div>
+        </div>
+        <div class="p-3 bg-gray-50 h-full">
+         <div class="h-12 bg-gradient-to-r from-forest to-emerald rounded mb-2"></div>
+         <div class="grid grid-cols-2 gap-1">
+          <div class="h-8 bg-white rounded shadow-sm"></div>
+          <div class="h-8 bg-white rounded shadow-sm"></div>
+         </div>
+        </div>
+       </div>
+       <p class="text-center text-xs text-gray-500 mt-2">📟 Tablet</p>
+      </div><!-- Desktop -->
+      <div class="mockup-screen" style="width: 280px;">
+       <div class="mockup-content" style="height: 180px;">
+        <div class="bg-forest p-2">
+         <div class="flex justify-between items-center">
+          <div class="flex items-center gap-2">
+           <div class="w-6 h-6 bg-emerald rounded-full flex items-center justify-center">
+            <span class="text-white text-xs font-bold">J4Y</span>
+           </div><span class="text-white text-sm">Just4Youth</span>
+          </div>
+          <div class="flex gap-3 text-white/80 text-xs">
+           <span>Accueil</span> <span>Activités</span> <span>Contact</span>
+          </div>
+         </div>
+        </div>
+        <div class="p-3 bg-gray-50 h-full">
+         <div class="h-16 bg-gradient-to-r from-forest to-emerald rounded mb-2 flex items-center justify-center">
+          <span class="text-white text-sm">Hero Banner</span>
+         </div>
+         <div class="grid grid-cols-3 gap-2">
+          <div class="h-10 bg-white rounded shadow-sm"></div>
+          <div class="h-10 bg-white rounded shadow-sm"></div>
+          <div class="h-10 bg-white rounded shadow-sm"></div>
+         </div>
+        </div>
+       </div>
+       <p class="text-center text-xs text-gray-500 mt-2">🖥️ Desktop</p>
+      </div>
+     </div>
+     <div class="mt-8 reveal" style="animation-delay: 0.3s;">
+      <div class="tech-grid max-w-md mx-auto">
+       <div class="tech-item text-forest">
+        Bootstrap 5
+       </div>
+       <div class="tech-item text-forest">
+        Flexbox
+       </div>
+       <div class="tech-item text-forest">
+        CSS Grid
+       </div>
+       <div class="tech-item text-forest">
+        Media Queries
+       </div>
+       <div class="tech-item text-forest">
+        Container Fluid
+       </div>
+       <div class="tech-item text-forest">
+        Breakpoints
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Slide 8: Conclusion -->
+   <section class="slide bg-forest flex items-center p-8" data-index="7">
+    <div class="blob blob-1" style="opacity: 0.2;"></div>
+    <div class="blob blob-2" style="opacity: 0.2;"></div>
+    <div class="blob blob-3" style="opacity: 0.2;"></div>
+    <div class="max-w-4xl mx-auto w-full text-center relative z-10">
+     <div class="reveal">
+      <svg class="w-20 h-20 mx-auto mb-6" viewbox="0 0 100 100">
+       <circle cx="50" cy="50" r="45" fill="none" stroke="#276D2A" stroke-width="3" /> <path d="M30 50 Q50 25 70 50 Q50 75 30 50" fill="#276D2A" /> <circle cx="50" cy="50" r="15" fill="#D8F3DC" /> <text x="50" y="55" text-anchor="middle" fill="#1B4332" font-size="12" font-weight="bold">
+        J4Y
+       </text>
+      </svg>
+     </div>
+     <h2 class="font-playfair text-4xl md:text-5xl font-bold text-white mb-6 reveal" style="animation-delay: 0.2s;">Conclusion</h2>
+     <p class="text-xl text-green-200 mb-8 reveal" style="animation-delay: 0.3s;">Un projet alliant <strong class="text-white">rigueur du code</strong> et <strong class="text-white">impact social</strong><br>
+       pour la génération de demain.</p>
+     <div class="flex flex-wrap justify-center gap-4 mb-10 reveal" style="animation-delay: 0.4s;">
+      <div class="bg-white/10 backdrop-blur rounded-xl px-6 py-4">
+       <div class="text-3xl mb-2">
+        🏗️
+       </div>
+       <p class="text-white font-semibold">HTML5</p>
+       <p class="text-green-200 text-sm">Structure sémantique</p>
+      </div>
+      <div class="bg-white/10 backdrop-blur rounded-xl px-6 py-4">
+       <div class="text-3xl mb-2">
+        🎨
+       </div>
+       <p class="text-white font-semibold">CSS3</p>
+       <p class="text-green-200 text-sm">Design moderne</p>
+      </div>
+      <div class="bg-white/10 backdrop-blur rounded-xl px-6 py-4">
+       <div class="text-3xl mb-2">
+        ⚡
+       </div>
+       <p class="text-white font-semibold">JavaScript</p>
+       <p class="text-green-200 text-sm">Interactivité</p>
+      </div>
+     </div>
+     <div class="reveal" style="animation-delay: 0.5s;">
+      <div class="inline-flex items-center gap-3 bg-emerald text-white px-8 py-4 rounded-full text-lg font-semibold pulse-ring">
+       <span>🚀</span> <span>Prêt à transformer l'avenir</span>
+      </div>
+     </div>
+     <div class="mt-12 pt-8 border-t border-white/20 reveal" style="animation-delay: 0.6s;">
+      <p class="text-green-200"><span class="font-playfair text-white text-lg">Just4Youth</span> — Plateforme Web pour l'Engagement de la Jeunesse</p>
+      <p class="text-green-300/60 text-sm mt-2">© 2024 • Développé avec passion ❤️</p>
+     </div>
+    </div>
+   </section>
+  </div>
+  <script>
+    // Configuration par défaut
+    const defaultConfig = {
+      main_title: 'Just4Youth',
+      subtitle: 'Plateforme Digitale pour l\'Engagement de la Jeunesse',
+      background_color: '#1B4332',
+      accent_color: '#276D2A',
+      text_color: '#FFFFFF',
+      secondary_surface: '#D8F3DC',
+      action_color: '#276D2A',
+      font_family: 'Plus Jakarta Sans',
+      font_size: 16
+    };
+
+    // Initialisation de l'Element SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (config) => {
+          const mainTitle = document.getElementById('main-title');
+          const subtitle = document.getElementById('subtitle');
+          
+          if (mainTitle) {
+            mainTitle.textContent = config.main_title || defaultConfig.main_title;
+          }
+          if (subtitle) {
+            subtitle.textContent = config.subtitle || defaultConfig.subtitle;
+          }
+          
+          // Appliquer les couleurs
+          document.documentElement.style.setProperty('--forest', config.background_color || defaultConfig.background_color);
+          document.documentElement.style.setProperty('--emerald', config.accent_color || defaultConfig.accent_color);
+          
+          // Appliquer la police
+          const customFont = config.font_family || defaultConfig.font_family;
+          document.body.style.fontFamily = `${customFont}, sans-serif`;
+          
+          // Appliquer la taille de police
+          const baseSize = config.font_size || defaultConfig.font_size;
+          document.body.style.fontSize = `${baseSize}px`;
+        },
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (value) => {
+                config.background_color = value;
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            },
+            {
+              get: () => config.secondary_surface || defaultConfig.secondary_surface,
+              set: (value) => {
+                config.secondary_surface = value;
+                window.elementSdk.setConfig({ secondary_surface: value });
+              }
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => {
+                config.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            },
+            {
+              get: () => config.accent_color || defaultConfig.accent_color,
+              set: (value) => {
+                config.accent_color = value;
+                window.elementSdk.setConfig({ accent_color: value });
+              }
+            },
+            {
+              get: () => config.action_color || defaultConfig.action_color,
+              set: (value) => {
+                config.action_color = value;
+                window.elementSdk.setConfig({ action_color: value });
+              }
+            }
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => config.font_family || defaultConfig.font_family,
+            set: (value) => {
+              config.font_family = value;
+              window.elementSdk.setConfig({ font_family: value });
+            }
+          },
+          fontSizeable: {
+            get: () => config.font_size || defaultConfig.font_size,
+            set: (value) => {
+              config.font_size = value;
+              window.elementSdk.setConfig({ font_size: value });
+            }
+          }
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ['main_title', config.main_title || defaultConfig.main_title],
+          ['subtitle', config.subtitle || defaultConfig.subtitle]
+        ])
+      });
+    }
+
+    // Navigation par points
+    const navDots = document.querySelectorAll('.nav-dot');
+    const slides = document.querySelectorAll('.slide');
+    
+    navDots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const slideIndex = parseInt(dot.dataset.slide);
+        slides[slideIndex].scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // Observer pour la navigation et les animations reveal
+    const observerOptions = {
+      root: document.getElementById('app'),
+      threshold: 0.5
+    };
+
+    const slideObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const index = parseInt(entry.target.dataset.index);
+          navDots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
+          });
+          
+          // Activer les animations reveal
+          entry.target.querySelectorAll('.reveal').forEach((el, i) => {
+            setTimeout(() => {
+              el.classList.add('active');
+            }, i * 100);
+          });
+          
+          // Animer les compteurs sur la slide 6
+          if (index === 5) {
+            animateCounters();
+          }
+        }
+      });
+    }, observerOptions);
+
+    slides.forEach(slide => slideObserver.observe(slide));
+
+    // Animation des compteurs
+    function animateCounters() {
+      const counters = document.querySelectorAll('.stat-counter');
+      counters.forEach(counter => {
+        const target = parseInt(counter.dataset.target);
+        const duration = 2000;
+        const increment = target / (duration / 16);
+        let current = 0;
+        
+        const updateCounter = () => {
+          current += increment;
+          if (current < target) {
+            counter.textContent = Math.floor(current);
+            requestAnimationFrame(updateCounter);
+          } else {
+            counter.textContent = target + '+';
+          }
+        };
+        
+        updateCounter();
+      });
+    }
+
+    // Menu interactif démo (Slide 5)
+    const menuContents = {
+      sport: {
+        emoji: '🏃',
+        title: 'Activités Sportives',
+        desc: 'Football, Basketball, Arts martiaux et plus encore pour tous les niveaux.'
+      },
+      culture: {
+        emoji: '📚',
+        title: 'Culture & Patrimoine',
+        desc: 'Découverte du patrimoine arabo-musulman, calligraphie, histoire et traditions.'
+      },
+      education: {
+        emoji: '🎓',
+        title: 'Soutien Scolaire',
+        desc: 'Aide aux devoirs, cours de langues, préparation aux examens.'
+      }
+    };
+
+    document.querySelectorAll('.menu-demo-btn').forEach(btn => {
+      btn.addEventListener('mouseenter', () => {
+        const content = menuContents[btn.dataset.content];
+        const demoContent = document.getElementById('demo-content');
+        
+        demoContent.innerHTML = `
+          <div class="flex items-center gap-3">
+            <span class="text-3xl">${content.emoji}</span>
+            <div>
+              <h4 class="font-semibold text-forest">${content.title}</h4>
+              <p class="text-sm text-gray-600">${content.desc}</p>
+            </div>
+          </div>
+        `;
+        
+        // Mettre à jour les styles des boutons
+        document.querySelectorAll('.menu-demo-btn').forEach(b => {
+          b.classList.remove('bg-forest', 'text-white');
+          b.classList.add('bg-forest/20', 'text-forest');
+        });
+        btn.classList.remove('bg-forest/20', 'text-forest');
+        btn.classList.add('bg-forest', 'text-white');
+      });
+    });
+
+    // Initialiser les reveals sur la première slide
+    setTimeout(() => {
+      slides[0].querySelectorAll('.reveal').forEach((el, i) => {
+        setTimeout(() => {
+          el.classList.add('active');
+        }, i * 150);
+      });
+    }, 300);
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d211ff503b7ca1e',t:'MTc3MTc5MTAwNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

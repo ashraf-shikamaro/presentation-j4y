@@ -11,10 +11,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
   <style>
     :root {
-      --forest: #1B4332;
-      --emerald: #276D2A;
+      --primary: #125B39;
+      --dark: #081C15;
+      --light: #F8F5F0;
+      --accent: #D4AF37;
+      --yellow-blob: #F2E3C6;
       --white: #FFFFFF;
-      --light-green: #D8F3DC;
     }
     
     html, body {
@@ -26,10 +28,10 @@
     .font-playfair { font-family: 'Playfair Display', serif; }
     .font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
     
-    .bg-forest { background-color: var(--forest); }
-    .bg-emerald { background-color: var(--emerald); }
-    .text-forest { color: var(--forest); }
-    .text-emerald { color: var(--emerald); }
+    .bg-forest { background-color: var(--primary); }
+    .bg-emerald { background-color: var(--accent); }
+    .text-forest { color: var(--primary); }
+    .text-emerald { color: var(--accent); }
     
     .blob {
       position: absolute;
@@ -42,7 +44,7 @@
     .blob-1 {
       width: 300px;
       height: 300px;
-      background: var(--emerald);
+      background: var(--accent);
       top: -50px;
       right: -50px;
       animation-delay: 0s;
@@ -51,7 +53,7 @@
     .blob-2 {
       width: 250px;
       height: 250px;
-      background: var(--forest);
+      background: var(--primary);
       bottom: -30px;
       left: -30px;
       animation-delay: 2s;
@@ -60,7 +62,7 @@
     .blob-3 {
       width: 200px;
       height: 200px;
-      background: var(--emerald);
+      background: var(--yellow-blob);
       top: 50%;
       left: 50%;
       animation-delay: 4s;
@@ -122,7 +124,7 @@
     .stat-counter {
       font-size: 3rem;
       font-weight: 700;
-      background: linear-gradient(135deg, var(--forest), var(--emerald));
+      background: linear-gradient(135deg, var(--primary), var(--accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -132,13 +134,13 @@
       background: rgba(255, 255, 255, 0.95);
       border-radius: 16px;
       padding: 24px;
-      box-shadow: 0 10px 40px rgba(27, 67, 50, 0.1);
+      box-shadow: 0 10px 40px rgba(18, 91, 57, 0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     
     .feature-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 20px 60px rgba(27, 67, 50, 0.15);
+      box-shadow: 0 20px 60px rgba(18, 91, 57, 0.15);
     }
     
     .nav-dots {
@@ -157,18 +159,18 @@
       height: 12px;
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.3);
-      border: 2px solid var(--forest);
+      border: 2px solid var(--primary);
       cursor: pointer;
       transition: all 0.3s ease;
     }
     
     .nav-dot.active {
-      background: var(--emerald);
+      background: var(--accent);
       transform: scale(1.2);
     }
     
     .nav-dot:hover {
-      background: var(--forest);
+      background: var(--primary);
     }
     
     .icon-circle {
@@ -178,7 +180,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, var(--forest), var(--emerald));
+      background: linear-gradient(135deg, var(--primary), var(--accent));
       color: white;
       margin-bottom: 16px;
     }
@@ -195,7 +197,7 @@
     }
     
     .gradient-text {
-      background: linear-gradient(135deg, var(--forest), var(--emerald));
+      background: linear-gradient(135deg, var(--primary), var(--accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -206,9 +208,9 @@
     }
     
     @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(39, 109, 42, 0.4); }
-      70% { box-shadow: 0 0 0 20px rgba(39, 109, 42, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(39, 109, 42, 0); }
+      0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+      70% { box-shadow: 0 0 0 20px rgba(212, 175, 55, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
     }
     
     .tech-grid {
@@ -218,7 +220,7 @@
     }
     
     .tech-item {
-      background: rgba(27, 67, 50, 0.1);
+      background: rgba(18, 91, 57, 0.1);
       padding: 8px 12px;
       border-radius: 8px;
       font-size: 12px;
@@ -234,9 +236,8 @@
   <style>body { box-sizing: border-box; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
- <body class="font-jakarta h-full overflow-x-hidden" style="background-color: var(--light-green);">
-  <div id="app" class="h-full overflow-auto">
-   <!-- Navigation Dots -->
+ <body class="font-jakarta h-full overflow-x-hidden" style="background-color: var(--light);">
+  <div id="app" class="h-full overflow-auto"><!-- Navigation Dots -->
    <div class="nav-dots">
     <div class="nav-dot active" data-slide="0"></div>
     <div class="nav-dot" data-slide="1"></div>
@@ -246,27 +247,71 @@
     <div class="nav-dot" data-slide="5"></div>
     <div class="nav-dot" data-slide="6"></div>
     <div class="nav-dot" data-slide="7"></div>
-   </div><!-- Slide 1: Titre -->
+    <div class="nav-dot" data-slide="8"></div>
+   </div><!-- Slide 0: Welcome -->
+   <section class="slide bg-dark flex items-center justify-center p-8" data-index="0">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="text-center relative z-10 max-w-5xl">
+     <div class="mb-12 reveal">
+      <h1 class="font-playfair text-5xl md:text-7xl font-bold text-white mb-4">Bienvenue</h1>
+      <p class="text-xl text-white/80">Présenté par</p>
+     </div>
+     <div class="grid md:grid-cols-2 gap-6 mb-12 reveal" style="animation-delay: 0.2s;">
+      <div class="bg-white/10 backdrop-blur rounded-2xl p-8 hover:bg-white/15 transition-all">
+       <div class="text-4xl mb-3">
+        👨‍💼
+       </div>
+       <h2 class="font-playfair text-2xl font-bold text-white">LAALIOUI ACHRAF</h2>
+       <p class="text-accent mt-2">Lead Developer</p>
+      </div>
+      <div class="bg-white/10 backdrop-blur rounded-2xl p-8 hover:bg-white/15 transition-all">
+       <div class="text-4xl mb-3">
+        👨‍💼
+       </div>
+       <h2 class="font-playfair text-2xl font-bold text-white">BOUAAZAOUI MOHAMED</h2>
+       <p class="text-accent mt-2">Co-Leader</p>
+      </div>
+      <div class="bg-white/10 backdrop-blur rounded-2xl p-8 hover:bg-white/15 transition-all">
+       <div class="text-4xl mb-3">
+        👨‍💼
+       </div>
+       <h2 class="font-playfair text-2xl font-bold text-white">ELHOR ACHRAF</h2>
+       <p class="text-accent mt-2">Ideas &amp; Team-member </p>
+      </div>
+      <div class="bg-white/10 backdrop-blur rounded-2xl p-8 hover:bg-white/15 transition-all">
+       <div class="text-4xl mb-3">
+        👨‍💼
+       </div>
+       <h2 class="font-playfair text-2xl font-bold text-white">AHIM MEHDI</h2>
+       <p class="text-accent mt-2">Team-member</p>
+      </div>
+     </div>
+     <div class="reveal" style="animation-delay: 0.4s;">
+      <p class="text-white/70 text-lg mb-8">Ensemble, nous créons une plateforme pour l'avenir</p>
+      <svg class="w-8 h-8 mx-auto text-white animate-bounce" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+     </div>
+    </div>
+   </section><!-- Slide 1: Titre -->
    <section class="slide bg-forest flex items-center justify-center p-8" data-index="0">
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
     <div class="blob blob-3"></div>
     <div class="text-center relative z-10 max-w-4xl">
      <div class="mb-8 reveal">
-      <svg class="w-24 h-24 mx-auto mb-6" viewbox="0 0 100 100">
-       <circle cx="50" cy="50" r="45" fill="none" stroke="#276D2A" stroke-width="3" /> <path d="M30 50 Q50 25 70 50 Q50 75 30 50" fill="#276D2A" opacity="0.8" /> <circle cx="50" cy="50" r="15" fill="#D8F3DC" /> <text x="50" y="55" text-anchor="middle" fill="#1B4332" font-size="12" font-weight="bold">
+      <svg class="w-24 h-24 mx-auto mb-6" viewbox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="none" stroke="#D4AF37" stroke-width="3" /> <path d="M30 50 Q50 25 70 50 Q50 75 30 50" fill="#D4AF37" opacity="0.8" /> <circle cx="50" cy="50" r="15" fill="#F8F5F0" /> <text x="50" y="55" text-anchor="middle" fill="#081C15" font-size="12" font-weight="bold">
         J4Y
        </text>
       </svg>
      </div>
      <h1 id="main-title" class="font-playfair text-5xl md:text-7xl font-bold text-white mb-6 reveal" style="animation-delay: 0.2s;">Just4Youth</h1>
      <p id="subtitle" class="text-xl md:text-2xl text-green-200 mb-8 reveal" style="animation-delay: 0.4s;">Plateforme Digitale pour l'Engagement de la Jeunesse</p>
-     <div class="flex justify-center gap-4 reveal" style="animation-delay: 0.6s;">
-      <span class="px-4 py-2 bg-emerald/30 text-white rounded-full text-sm">HTML5</span> <span class="px-4 py-2 bg-emerald/30 text-white rounded-full text-sm">CSS3</span> <span class="px-4 py-2 bg-emerald/30 text-white rounded-full text-sm">JavaScript</span> <span class="px-4 py-2 bg-emerald/30 text-white rounded-full text-sm">Bootstrap 5</span>
+     <div class="flex justify-center gap-4 reveal" style="animation-delay: 0.6s;"><span class="px-4 py-2 bg-emerald/30 text-white rounded-full text-sm">HTML5</span> <span class="px-4 py-2 bg-emerald/30 text-white rounded-full text-sm">CSS3</span> <span class="px-4 py-2 bg-emerald/30 text-white rounded-full text-sm">JavaScript</span> <span class="px-4 py-2 bg-emerald/30 text-white rounded-full text-sm">Bootstrap 5</span>
      </div>
      <div class="mt-12 reveal" style="animation-delay: 0.8s;">
-      <svg class="w-8 h-8 mx-auto text-white animate-bounce" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      <svg class="w-8 h-8 mx-auto text-white animate-bounce" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
       </svg>
      </div>
     </div>
@@ -274,31 +319,27 @@
    <section class="slide bg-white flex items-center p-8" data-index="1">
     <div class="max-w-6xl mx-auto w-full">
      <div class="grid md:grid-cols-2 gap-12 items-center">
-      <div class="reveal">
-       <span class="text-emerald font-semibold text-sm uppercase tracking-wider">Notre Raison d'Être</span>
+      <div class="reveal"><span class="text-emerald font-semibold text-sm uppercase tracking-wider">Notre Raison d'Être</span>
        <h2 class="font-playfair text-4xl md:text-5xl font-bold text-forest mt-2 mb-6">Mission</h2>
        <p class="text-lg text-gray-700 leading-relaxed mb-6">Accompagner l'<strong class="text-emerald">épanouissement identitaire</strong> (arabo-musulman) et citoyen à travers l'<strong class="text-emerald">innovation</strong> et la <strong class="text-emerald">bienveillance</strong>.</p>
        <div class="space-y-4">
         <div class="flex items-start gap-4">
          <div class="w-10 h-10 bg-emerald/10 rounded-full flex items-center justify-center flex-shrink-0">
-          <svg class="w-5 h-5 text-emerald" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          <svg class="w-5 h-5 text-emerald" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
           </svg>
          </div>
          <p class="text-gray-600">Créer un espace numérique inclusif et bienveillant</p>
         </div>
         <div class="flex items-start gap-4">
          <div class="w-10 h-10 bg-emerald/10 rounded-full flex items-center justify-center flex-shrink-0">
-          <svg class="w-5 h-5 text-emerald" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          <svg class="w-5 h-5 text-emerald" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
           </svg>
          </div>
          <p class="text-gray-600">Favoriser l'engagement citoyen des jeunes</p>
         </div>
         <div class="flex items-start gap-4">
          <div class="w-10 h-10 bg-emerald/10 rounded-full flex items-center justify-center flex-shrink-0">
-          <svg class="w-5 h-5 text-emerald" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          <svg class="w-5 h-5 text-emerald" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
           </svg>
          </div>
          <p class="text-gray-600">Valoriser l'identité et la diversité culturelle</p>
@@ -343,13 +384,11 @@
    </section><!-- Slide 3: Charte Graphique -->
    <section class="slide flex items-center p-8" style="background: linear-gradient(135deg, #D8F3DC 0%, #fff 100%);" data-index="2">
     <div class="max-w-6xl mx-auto w-full">
-     <div class="text-center mb-12 reveal">
-      <span class="text-emerald font-semibold text-sm uppercase tracking-wider">Identité Visuelle</span>
+     <div class="text-center mb-12 reveal"><span class="text-emerald font-semibold text-sm uppercase tracking-wider">Identité Visuelle</span>
       <h2 class="font-playfair text-4xl md:text-5xl font-bold text-forest mt-2">Charte Graphique</h2>
       <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Design élégant avec typographies contrastées et formes organiques animées pour un aspect humain</p>
      </div>
-     <div class="grid md:grid-cols-3 gap-6">
-      <!-- Couleurs -->
+     <div class="grid md:grid-cols-3 gap-6"><!-- Couleurs -->
       <div class="feature-card reveal">
        <h3 class="font-playfair text-xl font-bold text-forest mb-4">Palette de Couleurs</h3>
        <div class="space-y-3">
@@ -405,28 +444,23 @@
     <div class="blob blob-1" style="opacity: 0.15;"></div>
     <div class="blob blob-2" style="opacity: 0.15;"></div>
     <div class="max-w-6xl mx-auto w-full relative z-10">
-     <div class="text-center mb-12 reveal">
-      <span class="text-green-300 font-semibold text-sm uppercase tracking-wider">Navigation Intuitive</span>
+     <div class="text-center mb-12 reveal"><span class="text-green-300 font-semibold text-sm uppercase tracking-wider">Navigation Intuitive</span>
       <h2 class="font-playfair text-4xl md:text-5xl font-bold text-white mt-2">Expérience Utilisateur</h2>
      </div>
      <div class="grid md:grid-cols-2 gap-8 items-center">
       <div class="reveal">
        <div class="mockup-screen">
-        <div class="mockup-content">
-         <!-- Navbar Glassmorphism Mockup -->
+        <div class="mockup-content"><!-- Navbar Glassmorphism Mockup -->
          <div class="glass-nav p-3 flex items-center justify-between" style="background: rgba(27, 67, 50, 0.8);">
           <div class="flex items-center gap-2">
-           <div class="w-8 h-8 bg-emerald rounded-full flex items-center justify-center">
-            <span class="text-white text-xs font-bold">J4Y</span>
+           <div class="w-8 h-8 bg-emerald rounded-full flex items-center justify-center"><span class="text-white text-xs font-bold">J4Y</span>
            </div><span class="text-white text-sm font-semibold">Just4Youth</span>
           </div>
-          <div class="flex gap-4 text-white/80 text-xs">
-           <span>Accueil</span> <span>Activités</span> <span>À propos</span> <span>Contact</span>
+          <div class="flex gap-4 text-white/80 text-xs"><span>Accueil</span> <span>Activités</span> <span>À propos</span> <span>Contact</span>
           </div>
          </div><!-- Page Content Mockup -->
          <div class="p-4 bg-gray-50">
-          <div class="h-24 bg-gradient-to-r from-forest to-emerald rounded-lg mb-4 flex items-center justify-center">
-           <span class="text-white font-playfair text-lg">Hero Section</span>
+          <div class="h-24 bg-gradient-to-r from-forest to-emerald rounded-lg mb-4 flex items-center justify-center"><span class="text-white font-playfair text-lg">Hero Section</span>
           </div>
           <div class="grid grid-cols-3 gap-2">
            <div class="h-16 bg-white rounded shadow-sm flex items-center justify-center text-xs text-gray-400">
@@ -447,8 +481,7 @@
        <div class="bg-white/10 backdrop-blur rounded-2xl p-6">
         <div class="flex items-center gap-4 mb-3">
          <div class="w-12 h-12 bg-emerald rounded-xl flex items-center justify-center">
-          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
          </div>
          <h3 class="text-white font-semibold text-lg">Navbar Glassmorphism</h3>
@@ -458,8 +491,7 @@
        <div class="bg-white/10 backdrop-blur rounded-2xl p-6">
         <div class="flex items-center gap-4 mb-3">
          <div class="w-12 h-12 bg-emerald rounded-xl flex items-center justify-center">
-          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
           </svg>
          </div>
          <h3 class="text-white font-semibold text-lg">Structure Segmentée</h3>
@@ -472,8 +504,7 @@
    </section><!-- Slide 5: Innovation Technique -->
    <section class="slide bg-white flex items-center p-8" data-index="4">
     <div class="max-w-6xl mx-auto w-full">
-     <div class="text-center mb-12 reveal">
-      <span class="text-emerald font-semibold text-sm uppercase tracking-wider">Fonctionnalités Avancées</span>
+     <div class="text-center mb-12 reveal"><span class="text-emerald font-semibold text-sm uppercase tracking-wider">Fonctionnalités Avancées</span>
       <h2 class="font-playfair text-4xl md:text-5xl font-bold text-forest mt-2">Innovation Technique</h2>
       <p class="text-gray-600 mt-4">Menu interactif avec changement de contenu dynamique au survol</p>
      </div>
@@ -503,12 +534,10 @@ menuItems.<span class="text-blue-300">forEach</span>(item =&gt; {
       <div class="reveal" style="animation-delay: 0.3s;">
        <div class="bg-gradient-to-br from-forest/5 to-emerald/5 rounded-2xl p-6">
         <h3 class="font-playfair text-xl font-bold text-forest mb-4">Menu Interactif - Démo</h3>
-        <div class="flex gap-2 mb-4">
-         <button class="menu-demo-btn px-4 py-2 bg-forest text-white rounded-lg text-sm transition-all hover:bg-emerald" data-content="sport">🏃 Sport</button> <button class="menu-demo-btn px-4 py-2 bg-forest/20 text-forest rounded-lg text-sm transition-all hover:bg-forest hover:text-white" data-content="culture">📚 Culture</button> <button class="menu-demo-btn px-4 py-2 bg-forest/20 text-forest rounded-lg text-sm transition-all hover:bg-forest hover:text-white" data-content="education">🎓 Éducation</button>
+        <div class="flex gap-2 mb-4"><button class="menu-demo-btn px-4 py-2 bg-forest text-white rounded-lg text-sm transition-all hover:bg-emerald" data-content="sport">🏃 Sport</button> <button class="menu-demo-btn px-4 py-2 bg-forest/20 text-forest rounded-lg text-sm transition-all hover:bg-forest hover:text-white" data-content="culture">📚 Culture</button> <button class="menu-demo-btn px-4 py-2 bg-forest/20 text-forest rounded-lg text-sm transition-all hover:bg-forest hover:text-white" data-content="education">🎓 Éducation</button>
         </div>
         <div id="demo-content" class="bg-white rounded-xl p-4 min-h-[120px] transition-all duration-300">
-         <div class="flex items-center gap-3">
-          <span class="text-3xl">🏃</span>
+         <div class="flex items-center gap-3"><span class="text-3xl">🏃</span>
           <div>
            <h4 class="font-semibold text-forest">Activités Sportives</h4>
            <p class="text-sm text-gray-600">Football, Basketball, Arts martiaux et plus encore pour tous les niveaux.</p>
@@ -522,8 +551,7 @@ menuItems.<span class="text-blue-300">forEach</span>(item =&gt; {
    </section><!-- Slide 6: Dynamisme & JS -->
    <section class="slide flex items-center p-8" style="background: linear-gradient(180deg, #1B4332 0%, #276D2A 100%);" data-index="5">
     <div class="max-w-6xl mx-auto w-full">
-     <div class="text-center mb-12 reveal">
-      <span class="text-green-300 font-semibold text-sm uppercase tracking-wider">Animations Performantes</span>
+     <div class="text-center mb-12 reveal"><span class="text-green-300 font-semibold text-sm uppercase tracking-wider">Animations Performantes</span>
       <h2 class="font-playfair text-4xl md:text-5xl font-bold text-white mt-2">Dynamisme &amp; JavaScript</h2>
      </div>
      <div class="grid md:grid-cols-2 gap-8">
@@ -607,13 +635,11 @@ menuItems.<span class="text-blue-300">forEach</span>(item =&gt; {
     </style><!-- Slide 7: Responsive Design -->
    <section class="slide bg-white flex items-center p-8" data-index="6">
     <div class="max-w-6xl mx-auto w-full">
-     <div class="text-center mb-12 reveal">
-      <span class="text-emerald font-semibold text-sm uppercase tracking-wider">Adaptabilité Totale</span>
+     <div class="text-center mb-12 reveal"><span class="text-emerald font-semibold text-sm uppercase tracking-wider">Adaptabilité Totale</span>
       <h2 class="font-playfair text-4xl md:text-5xl font-bold text-forest mt-2">Responsive Design</h2>
       <p class="text-gray-600 mt-4">Site 100% adaptable grâce à Bootstrap 5 et Media Queries personnalisées</p>
      </div>
-     <div class="flex flex-wrap justify-center gap-6 items-end reveal">
-      <!-- Mobile -->
+     <div class="flex flex-wrap justify-center gap-6 items-end reveal"><!-- Mobile -->
       <div class="mockup-screen" style="width: 100px;">
        <div class="mockup-content" style="height: 180px;">
         <div class="bg-forest p-1">
@@ -643,8 +669,7 @@ menuItems.<span class="text-blue-300">forEach</span>(item =&gt; {
           <div class="flex items-center gap-1">
            <div class="w-5 h-5 bg-emerald rounded-full"></div><span class="text-white text-xs">J4Y</span>
           </div>
-          <div class="flex gap-2 text-white/60 text-xs">
-           <span>•</span><span>•</span><span>•</span>
+          <div class="flex gap-2 text-white/60 text-xs"><span>•</span><span>•</span><span>•</span>
           </div>
          </div>
         </div>
@@ -663,18 +688,15 @@ menuItems.<span class="text-blue-300">forEach</span>(item =&gt; {
         <div class="bg-forest p-2">
          <div class="flex justify-between items-center">
           <div class="flex items-center gap-2">
-           <div class="w-6 h-6 bg-emerald rounded-full flex items-center justify-center">
-            <span class="text-white text-xs font-bold">J4Y</span>
+           <div class="w-6 h-6 bg-emerald rounded-full flex items-center justify-center"><span class="text-white text-xs font-bold">J4Y</span>
            </div><span class="text-white text-sm">Just4Youth</span>
           </div>
-          <div class="flex gap-3 text-white/80 text-xs">
-           <span>Accueil</span> <span>Activités</span> <span>Contact</span>
+          <div class="flex gap-3 text-white/80 text-xs"><span>Accueil</span> <span>Activités</span> <span>Contact</span>
           </div>
          </div>
         </div>
         <div class="p-3 bg-gray-50 h-full">
-         <div class="h-16 bg-gradient-to-r from-forest to-emerald rounded mb-2 flex items-center justify-center">
-          <span class="text-white text-sm">Hero Banner</span>
+         <div class="h-16 bg-gradient-to-r from-forest to-emerald rounded mb-2 flex items-center justify-center"><span class="text-white text-sm">Hero Banner</span>
          </div>
          <div class="grid grid-cols-3 gap-2">
           <div class="h-10 bg-white rounded shadow-sm"></div>
@@ -716,8 +738,7 @@ menuItems.<span class="text-blue-300">forEach</span>(item =&gt; {
     <div class="blob blob-3" style="opacity: 0.2;"></div>
     <div class="max-w-4xl mx-auto w-full text-center relative z-10">
      <div class="reveal">
-      <svg class="w-20 h-20 mx-auto mb-6" viewbox="0 0 100 100">
-       <circle cx="50" cy="50" r="45" fill="none" stroke="#276D2A" stroke-width="3" /> <path d="M30 50 Q50 25 70 50 Q50 75 30 50" fill="#276D2A" /> <circle cx="50" cy="50" r="15" fill="#D8F3DC" /> <text x="50" y="55" text-anchor="middle" fill="#1B4332" font-size="12" font-weight="bold">
+      <svg class="w-20 h-20 mx-auto mb-6" viewbox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="none" stroke="#276D2A" stroke-width="3" /> <path d="M30 50 Q50 25 70 50 Q50 75 30 50" fill="#276D2A" /> <circle cx="50" cy="50" r="15" fill="#D8F3DC" /> <text x="50" y="55" text-anchor="middle" fill="#1B4332" font-size="12" font-weight="bold">
         J4Y
        </text>
       </svg>
@@ -749,8 +770,7 @@ menuItems.<span class="text-blue-300">forEach</span>(item =&gt; {
       </div>
      </div>
      <div class="reveal" style="animation-delay: 0.5s;">
-      <div class="inline-flex items-center gap-3 bg-emerald text-white px-8 py-4 rounded-full text-lg font-semibold pulse-ring">
-       <span>🚀</span> <span>Prêt à transformer l'avenir</span>
+      <div class="inline-flex items-center gap-3 bg-emerald text-white px-8 py-4 rounded-full text-lg font-semibold pulse-ring"><span>🚀</span> <span>Prêt à transformer l'avenir</span>
       </div>
      </div>
      <div class="mt-12 pt-8 border-t border-white/20 reveal" style="animation-delay: 0.6s;">
@@ -980,5 +1000,5 @@ menuItems.<span class="text-blue-300">forEach</span>(item =&gt; {
       });
     }, 300);
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d211ff503b7ca1e',t:'MTc3MTc5MTAwNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d218feec252ca1e',t:'MTc3MTc5NTU5MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
